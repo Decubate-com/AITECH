@@ -1,0 +1,52 @@
+{
+  "name": "aitech",
+  "version": "1.0.0",
+  "description": "The AITECH ERC20 token",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle compile && solhint contracts\\**\\*.sol",
+    "coverage": "truffle run coverage",
+    "commit": "solhint contracts\\**\\*.sol && truffle test && git-cz",
+    "push": "git push",
+    "dev": "ganache-cli -f wss://speedy-nodes-nyc.moralis.io/5b0d6e9705d717370c1781d9/bsc/testnet/ws --gasLimit 10000000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Decubate-com/AITECH.git"
+  },
+  "author": "Decubate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Decubate-com/AITECH/issues"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2",
+    "@openzeppelin/contracts-upgradeable": "^4.3.2",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@truffle/hdwallet-provider": "1.5.1",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ethereum-checksum-address": "0.0.7",
+    "node-rest-client-promise": "^3.1.1",
+    "solhint": "^3.3.6"
+  },
+  "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.9.1",
+    "@types/mocha": "^9.0.0",
+    "ganache-cli": "^6.12.2",
+    "git-cz": "^4.7.6",
+    "solidity-coverage": "^0.7.17",
+    "truffle": "^5.4.14",
+    "truffle-plugin-verify": "^0.5.15"
+  },
+  "homepage": "https://github.com/Decubate-com/AITECH#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  }
+}

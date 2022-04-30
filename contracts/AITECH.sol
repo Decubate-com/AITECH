@@ -1,5 +1,5 @@
-// contracts/AITECH.sol
 // SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -28,14 +28,20 @@ contract AITECH is ERC20, Ownable, AccessControl, ERC20Burnable {
         _setupRole(BURNER_ROLE, msg.sender);
     }
 
+    // This function uses the virtual _mint() function
+    // it can be called by the MINTER_ROLE
     function mint(address to, uint256 amount) public onlyRole(MINTER_ROLE) {
         _mint(to, amount);
     }
 
+    // This function overrides the burn() function from the ERC20Burnable extension
+    // it can be called by the BURNER_ROLE
     function burn(uint256 amount) public override onlyRole(BURNER_ROLE){
         _burn(_msgSender(), amount);
     }
 
+    // This function overrides the burnFrom() function from the ERC20Burnable extension
+    // it can be called by the BURNER_ROLE
     function burnFrom(address account, uint256 amount) public override onlyRole(BURNER_ROLE){
         _spendAllowance(account, _msgSender(), amount);
         _burn(account, amount);

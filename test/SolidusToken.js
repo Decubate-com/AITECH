@@ -44,4 +44,39 @@ contract("AITECH", (accounts) => {
 
       });
 
+      describe("mint", () => {
+
+        it("mint tokens with correct role", async () => {
+
+            let totalmint = 1000000;
+
+            await this.AITECHToken.mint(accounts[0], totalmint);
+
+            const totalsupply = await this.AITECHToken.totalSupply();
+
+            assert.equal(totalsupply, totalmint);
+        });
+
+      });
+
+      describe("burn", () => {
+
+        it("burn tokens with correct role", async () => {
+
+            // initial minted tokens
+            let totalmint = 1000000;
+
+            // this amount will be burned
+            let totalburn = 500000;
+
+            await this.AITECHToken.burn(totalburn);
+
+            const totalsupply = await this.AITECHToken.totalSupply();
+
+            // total minted tokens minus burned tokens
+            assert.equal(totalsupply, totalmint-totalburn);
+        });
+
+      });
+
 });

@@ -1,53 +1,45 @@
 {
-  "name": "aitech",
+  "name": "@prb/foundry-template",
+  "description": "Foundry-based template for developing Solidity smart contracts",
   "version": "1.0.0",
-  "description": "The AITECH ERC20 token",
-  "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "truffle test",
-    "compile": "truffle compile && solhint contracts\\**\\*.sol",
-    "coverage": "truffle run coverage",
-    "commit": "solhint contracts\\**\\*.sol && truffle test && git-cz",
-    "push": "git push",
-    "dev": "ganache-cli -f wss://speedy-nodes-nyc.moralis.io/5b0d6e9705d717370c1781d9/bsc/testnet/ws --gasLimit 10000000"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Decubate-com/AITECH.git"
-  },
-  "author": "Decubate",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Decubate-com/AITECH/issues"
-  },
-  "dependencies": {
-    "@openzeppelin/contracts": "^4.3.2",
-    "@openzeppelin/contracts-upgradeable": "^4.3.2",
-    "@openzeppelin/test-helpers": "^0.5.15",
-    "@truffle/hdwallet-provider": "1.5.1",
-    "chai": "^4.3.4",
-    "dotenv": "^10.0.0",
-    "ethereum-checksum-address": "0.0.7",
-    "keccak256": "^1.0.6",
-    "node-rest-client-promise": "^3.1.1",
-    "solhint": "^3.3.6"
+  "author": {
+    "name": "Paul Razvan Berg",
+    "url": "https://github.com/paulrberg"
   },
   "devDependencies": {
-    "@openzeppelin/truffle-upgrades": "^1.9.1",
-    "@types/mocha": "^9.0.0",
-    "ganache-cli": "^6.12.2",
-    "git-cz": "^4.7.6",
-    "solidity-coverage": "^0.7.17",
-    "truffle": "^5.4.14",
-    "truffle-plugin-verify": "^0.5.15"
+    "@commitlint/cli": "^17.1.2",
+    "@openzeppelin/contracts": "^4.8.0",
+    "@commitlint/config-conventional": "^17.1.0",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.24",
+    "solhint": "^3.3.7",
+    "solhint-plugin-prettier": "^0.0.5"
   },
-  "homepage": "https://github.com/Decubate-com/AITECH#readme",
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/git-cz"
-    }
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "forge",
+    "foundry",
+    "smart-contracts",
+    "solidity",
+    "template"
+  ],
+  "packageManager": "yarn@3.2.1",
+  "private": true,
+  "scripts": {
+    "compile": "forge build",
+    "test": "bash -c 'source .env && forge test -f $GOERLI -vvv'",
+    "lint": "yarn solhint && yarn prettier:check",
+    "deploy:goerli": "bash -c 'source .env && forge script Deploy --rpc-url $GOERLI --broadcast --private-key $GOERLI_PK --verify --etherscan-api-key $ETHERSCAN'",
+    "lint:check": "yarn prettier:check && yarn solhint:check",
+    "postinstall": "husky install",
+    "coverage": "bash script/coverage.sh",
+    "prettier": "prettier --config \"./.prettierrc.yml\" --write \"**/*.{json,md,sol,yml}\"",
+    "prettier:check": "prettier --config \"./.prettierrc.yml\" --check \"**/*.{json,md,sol,yml}\"",
+    "solhint": "solhint --config \"./.solhint.json\" \"{src,test}/**/*.sol\""
   }
 }

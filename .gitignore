@@ -1,10 +1,24 @@
-node_modules/
-package-lock.json
-build/
-bin
-.env
-coverage
-coverage.json
-.vscode
-.ds_store
-yarn.lock
+# directories
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+**/cache
+**/node_modules
+**/out
+**/coverage
+
+# files
+*.env
+*.log
+.DS_Store
+.pnp.*
+yarn-debug.log*
+yarn-error.log*
+
+# broadcasts
+!/broadcast
+/broadcast/*
+/broadcast/*/31337/

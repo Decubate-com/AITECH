@@ -1,0 +1,15 @@
+[submodule "lib/forge-std"]
+	branch = v1.2.0
+	path = lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "lib/prb-test"]
+	branch = v0.3.1
+	path = lib/prb-test
+	url = https://github.com/paulrberg/prb-test
+[submodule "lib/openzeppelin-contracts"]
+	path = lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
+	branch = v4.8.0
+[submodule "lib/ds-test"]
+	path = lib/ds-test
+	url = https://github.com/dapphub/ds-test
